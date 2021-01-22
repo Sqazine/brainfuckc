@@ -1,4 +1,4 @@
-# Product Name
+# BrainFuckC
 > C language implementation of a Brainfuck language interpreter.
 
 ## Installation
