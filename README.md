@@ -1,10 +1,6 @@
 # Product Name
 > C language implementation of a Brainfuck language interpreter.
 
-[![Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Downloads Stats][npm-downloads]][npm-url]
-
 ## Installation
 
 1.Install a ANSC C89 compiler(gcc,clang,msvc etc) \
