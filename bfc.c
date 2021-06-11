@@ -19,7 +19,12 @@ int main(int argc, char **argv)
     else
     {
         str = argv[1];
+#ifdef _WIN32
+        FILE *fp;
+        fopen_s(&fp, str, "rb");
+#else
         FILE *fp = fopen(str, "rb");
+#endif
         if (fp == NULL)
         {
             printf("cannot open file:%s", str);
