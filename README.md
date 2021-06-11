@@ -1,4 +1,4 @@
-# BrainFuckC
+# bfc
 > C language implementation of a Brainfuck language interpreter.
 
 ## Installation
@@ -16,12 +16,12 @@ cmake --build .
 ## Usage example
 
 ```sh
-brainfuckc assets/helloworld.bf
+bfc assets/helloworld.bf
 Hello World!
 ```
 If you prefer command line,you can do so
 ```sh
-brainfuckc
+bfc
 >>> ++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++.>+.+++++++..+++.>++.<<+++++++++++++++.>.+++.------.--------.>+.>. 
 Hello World!
 
@@ -44,7 +44,7 @@ Distributed under the Apache 2.0 license. See ``LICENSE`` for more information.
 
 ## Contributing
 
-1. Fork it (<https://github.com/Sqazine/brainfuckc>)
+1. Fork it (<https://github.com/Sqazine/bfc>)
 2. Create your feature branch (`git checkout -b feature/XXX`)
 3. Commit your changes (`git commit -am 'Add some XXX'`)
 4. Push to the branch (`git push origin feature/XXX`)

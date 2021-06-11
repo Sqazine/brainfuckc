@@ -31,5 +31,11 @@ int main(void)
 
     print_forward(p);
     print_reverse(p);
+
+    clear_node(p);
+
+    if(p==NULL)
+        printf("clear all nodes");
+
     return 0;
 }

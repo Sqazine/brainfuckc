@@ -11,10 +11,10 @@ typedef struct list_node
     struct list_node *prev;
 } list_node;
 
-uint64_t list_size(list_node *head)
+int64_t list_size(list_node *head)
 {
     list_node *p = head;
-    uint64_t count = 0;
+    int64_t count = 0;
     while (p)
     {
         ++count;
@@ -23,11 +23,17 @@ uint64_t list_size(list_node *head)
     return count;
 }
 
-list_node *get_node(list_node *head, uint64_t index)
+list_node *get_node(list_node *head, int64_t index)
 {
+    if(index<0)
+    {
+        printf("index<0");
+        assert(index>=0);
+
+    }
     list_node *p = head;
     assert(index < list_size(head));
-    for (uint64_t i = 0; i < index; ++i)
+    for (int64_t i = 0; i < index; ++i)
         p = p->next;
     return p;
 }
@@ -62,9 +68,12 @@ list_node *append_node(list_node *head, list_node *node)
 list_node *pop_node(list_node *head)
 {
     list_node *p = get_tail_node(head);
-    list_node *pPrev = p->prev;
-    pPrev->next = NULL;
+    if (p->prev)
+    {
+        list_node *pPrev = p->prev;
+        pPrev->next = NULL;
     p->prev = NULL;
+    }
     free(p);
     return head;
 }
@@ -92,10 +101,26 @@ list_node *remove_node(list_node *head, uint64_t index)
     return head;
 }
 
+void clear_node(list_node *head)
+{
+    int64_t count = list_size(head);
+    for (int64_t i = count-1; i >= 0; --i)
+    {
+        list_node *p = get_tail_node(head);
+        if (p->prev)
+        {
+            list_node *pPrev = p->prev;
+            pPrev->next = NULL;
+        p->prev = NULL;
+        }
+        free(p);
+    }
+}
+
 void print_forward(list_node *head)
 {
     list_node *p = head;
-    uint64_t count = 0;
+    int64_t count = 0;
     while (p)
     {
         printf("list_node[%llu]:value=%lld,nextPointer=%p,prevPointer=%p\n", count++, p->value, p->next, p->prev);
@@ -105,7 +130,7 @@ void print_forward(list_node *head)
 void print_reverse(list_node *head)
 {
     list_node *p = get_tail_node(head);
-    uint64_t count = list_size(head) - 1;
+    int64_t count = list_size(head) - 1;
     while (p)
     {
         printf("list_node[%llu]:value=%lld,nextPointer=%p,prevPointer=%p\n", count--, p->value, p->next, p->prev);

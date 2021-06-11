@@ -8,17 +8,18 @@ int main(int argc, char **argv)
     {
         printf(">>> ");
         char s[1000];
-        while (fgets(s,1000,stdin)!=NULL)
+        while (fgets(s, 1000, stdin) != NULL)
         {
             list_node *head = lexer(s);
             interpreter(head);
+            clear_node(head);
             printf("\n>>> ");
         }
     }
     else
     {
         str = argv[1];
-        FILE *fp = fopen(str, "r");
+        FILE *fp = fopen(str, "rb");
         if (fp == NULL)
         {
             printf("cannot open file:%s", str);
@@ -36,6 +37,7 @@ int main(int argc, char **argv)
         }
         list_node *head = lexer(content);
         interpreter(head);
+        clear_node(head);
         fclose(fp);
     }
     return 0;
